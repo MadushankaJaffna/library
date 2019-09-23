@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Reservebook">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" stroke="BLACK" strokeType="INSIDE" width="822.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#2172ff4a" />
+                  <Stop color="#bfbfbf" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21ffd300" height="135.0" layoutX="25.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" width="607.0" />
+      <ImageView fx:id="btn_home" fitHeight="85.0" fitWidth="90.0" layoutX="27.0" layoutY="24.0" onMouseClicked="#btn_homeOnAction" pickOnBounds="true">
+         <image>
+            <Image url="@../photos/59458.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="149.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve Book" underline="true">
+         <font>
+            <Font name="Berlin Sans FB" size="41.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="orderId" layoutX="592.0" layoutY="83.0" onAction="#selectOrderID" prefHeight="25.0" prefWidth="167.0" promptText="Oder ID" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="bookId" layoutX="43.0" layoutY="146.0" prefHeight="25.0" prefWidth="144.0" promptText="Book Id" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="bookName" layoutX="234.0" layoutY="146.0" prefHeight="25.0" prefWidth="144.0" promptText="Book Name" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="memberName" layoutX="432.0" layoutY="146.0" prefHeight="25.0" prefWidth="188.0" promptText="Member Name" style="-jfx-label-float: true;" />
+      <JFXDatePicker fx:id="ReserveDate" layoutX="234.0" layoutY="201.0" prefHeight="25.0" prefWidth="177.0" promptText="Reserve Date" />
+      <JFXTextArea fx:id="note" layoutX="432.0" layoutY="196.0" prefHeight="18.0" prefWidth="188.0" promptText="Note" style="-jfx-label-float: true;" />
+      <TableView fx:id="tbl_reserveBook" layoutX="1.0" layoutY="355.0" prefHeight="231.0" prefWidth="814.0">
+        <columns>
+          <TableColumn prefWidth="65.0" text="Book ID" />
+          <TableColumn prefWidth="118.0" text="Book Name" />
+            <TableColumn prefWidth="65.0" text="Order ID" />
+            <TableColumn prefWidth="109.0" text="Member Name" />
+            <TableColumn prefWidth="87.0" text="Issued Date" />
+            <TableColumn prefWidth="91.0" text="Reserve Date" />
+            <TableColumn prefWidth="103.0" text="Note" />
+            <TableColumn prefWidth="97.0" text="Additional Price" />
+            <TableColumn prefWidth="78.0" text="Total Price" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="price" layoutX="646.0" layoutY="218.0" prefHeight="25.0" prefWidth="113.0" promptText="Price(Rs):" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="additionalPrice" layoutX="646.0" layoutY="265.0" prefHeight="25.0" prefWidth="113.0" promptText="Additional Price(Rs):" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="totalPrice" layoutX="646.0" layoutY="309.0" prefHeight="25.0" prefWidth="113.0" promptText="Total Price (Rs):" style="-jfx-label-float: true;" />
+      <JFXButton fx:id="btn_getReturnBook" layoutX="27.0" layoutY="280.0" onAction="#btn_getReturnBookOnAction" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: blue;" text="Get Rrturn Book" textFill="WHITE" />
+      <JFXButton layoutX="187.0" layoutY="280.0" onAction="#btn_deleteOnAction" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: red;" text="Delete Return Book" textFill="WHITE" />
+      <JFXTextField fx:id="issuedDate" layoutX="43.0" layoutY="202.0" prefHeight="25.0" prefWidth="144.0" promptText="Issued Date" style="-jfx-label-float: true;" />
+   </children>
+</AnchorPane>

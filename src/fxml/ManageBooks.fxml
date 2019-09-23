@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="499.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageBooks">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="499.0" stroke="#0a0a0a" strokeType="INSIDE" width="737.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#1fffba" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fx:id="home" fitHeight="69.0" fitWidth="74.0" layoutX="29.0" layoutY="32.0" onMouseClicked="#homeOnAction" pickOnBounds="true">
+         <image>
+            <Image url="@../photos/59458.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="127.0" layoutY="61.0" text="Manage Book" underline="true">
+         <font>
+            <Font name="Berlin Sans FB" size="41.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btn_AddBook" layoutX="401.0" layoutY="76.0" onAction="#btn_AddBookOnAction" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: green;" text="Add Book" textFill="WHITE" />
+      <JFXTextField fx:id="bookId" layoutX="35.0" layoutY="143.0" prefHeight="25.0" prefWidth="142.0" promptText="Book ID" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="bookName" layoutX="35.0" layoutY="196.0" prefHeight="25.0" prefWidth="142.0" promptText="Book Name" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="bookAuther" layoutX="35.0" layoutY="250.0" prefHeight="25.0" prefWidth="142.0" promptText="Book Auther" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="bookPrice" layoutX="35.0" layoutY="304.0" prefHeight="25.0" prefWidth="142.0" promptText="Book Price (Rs:)" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="bookQty" layoutX="35.0" layoutY="354.0" prefHeight="25.0" prefWidth="142.0" promptText="Qty:" style="-jfx-label-float: true;" />
+      <TableView fx:id="tableBookData" layoutX="182.0" layoutY="135.0" prefHeight="339.0" prefWidth="546.0">
+        <columns>
+          <TableColumn prefWidth="73.0" text="Book ID" />
+          <TableColumn prefWidth="157.0" text="Book Name" />
+            <TableColumn prefWidth="143.0" text="Book Auther" />
+            <TableColumn prefWidth="83.0" text="Book Price" />
+            <TableColumn prefWidth="98.0" text="On Hand Qty" />
+            <TableColumn prefWidth="72.0" text="Qty" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btn_addBookToLibrary" layoutX="32.0" layoutY="407.0" onAction="#btn_addBookToLibraryOnAction" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: blue;" text="Add Book To Library" textFill="WHITE" />
+      <JFXButton fx:id="btn_delete" layoutX="32.0" layoutY="442.0" onAction="#btn_deleteOnAction" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: red;" text="Delete" textFill="#fffbfb" />
+   </children>
+</AnchorPane>

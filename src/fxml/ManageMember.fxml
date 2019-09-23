@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" prefHeight="493.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageMember">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="499.0" stroke="BLACK" strokeType="INSIDE" width="737.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ff9e1f" />
+                  <Stop color="#0000007d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fx:id="btn_home" fitHeight="73.0" fitWidth="82.0" layoutX="32.0" layoutY="33.0" onMouseClicked="#btn_homeOnAction" onMouseEntered="#btn_mouseEntered" onMouseExited="#btn_mouseExited" pickOnBounds="true">
+         <image>
+            <Image url="@../photos/59458.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="140.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Members " underline="true">
+         <font>
+            <Font name="Berlin Sans FB" size="41.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="txt_id" layoutX="32.0" layoutY="145.0" prefHeight="25.0" prefWidth="202.0" promptText="ID:" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="txt_name" layoutX="32.0" layoutY="200.0" prefHeight="25.0" prefWidth="202.0" promptText="Name:" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="txt_address" layoutX="32.0" layoutY="259.0" prefHeight="25.0" prefWidth="202.0" promptText="Address:" style="-jfx-label-float: true;" />
+      <JFXTextField fx:id="txt_contact" layoutX="32.0" layoutY="317.0" prefHeight="25.0" prefWidth="202.0" promptText="Contact Number:" style="-jfx-label-float: true;" />
+      <JFXButton layoutX="491.0" layoutY="74.0" onAction="#btn_addNewMemberOnAction" prefHeight="32.0" prefWidth="127.0" style="-fx-background-color: green;" text="ADD NEW Member" textFill="WHITE" />
+      <JFXButton fx:id="addMember" layoutX="32.0" layoutY="396.0" onAction="#btn_addMemberOnAction" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: blue;" text="Add Member" textFill="#fffefe" />
+      <JFXButton layoutX="32.0" layoutY="439.0" onAction="#btn_deleteOnAction" prefHeight="25.0" prefWidth="202.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE" />
+      <TableView fx:id="tableMember" layoutX="254.0" layoutY="145.0" prefHeight="326.0" prefWidth="469.0">
+        <columns>
+          <TableColumn prefWidth="107.0" text="ID" />
+          <TableColumn prefWidth="126.0" text="Name" />
+            <TableColumn prefWidth="116.0" text="Address" />
+            <TableColumn prefWidth="108.0" text="Contact " />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <children>
+      <ImageView fitHeight="588.0" fitWidth="725.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../photos/mainphoto.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00116582" height="493.0" layoutX="-6.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
+      <Label layoutX="161.0" layoutY="14.0" prefHeight="50.0" prefWidth="402.0" text="Welcome To Library " textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font name="Britannic Bold" size="45.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#a47e00" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fx:id="member" fitHeight="111.0" fitWidth="111.0" layoutX="50.0" layoutY="127.0" onMouseClicked="#image_mouseclick" onMouseEntered="#img_mouseEnterence" onMouseExited="#img_mouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../photos/member.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="issue" fitHeight="124.0" fitWidth="104.0" layoutX="225.0" layoutY="131.0" onMouseClicked="#image_mouseclick" onMouseEntered="#img_mouseEnterence" onMouseExited="#img_mouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../photos/Isssue.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="returns" fitHeight="111.0" fitWidth="111.0" layoutX="388.0" layoutY="134.0" onMouseClicked="#image_mouseclick" onMouseEntered="#img_mouseEnterence" onMouseExited="#img_mouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../photos/return.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="manage" fitHeight="111.0" fitWidth="122.0" layoutX="556.0" layoutY="134.0" onMouseClicked="#image_mouseclick" onMouseEntered="#img_mouseEnterence" onMouseExited="#img_mouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../photos/setting.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="263.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create by madushanka @ IJSE DEP-4 " />
+      <Label fx:id="mainmenu" alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="293.0" prefHeight="43.0" prefWidth="487.0" textAlignment="CENTER">
+         <font>
+            <Font name="Bookman Old Style" size="36.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.9952380952380953" startY="0.35714285714285715">
+               <stops>
+                  <Stop color="#eba910" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="description" alignment="CENTER" layoutX="162.0" layoutY="353.0" prefHeight="27.0" prefWidth="402.0" textAlignment="CENTER" textFill="#f5f5f5" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
