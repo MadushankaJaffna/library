@@ -28,4 +28,5 @@ hs_err_pid*
 *.fxml
 *.xml
 *.jpg
+*.jar
 
