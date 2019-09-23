@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,6 +25,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import tableModel.memberTM;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -39,6 +42,7 @@ public class ManageMember implements Initializable {
     public JFXTextField txt_contact;
     public JFXButton addMember;
     public TableView<memberTM>  tableMember;
+    public JFXButton btn_delete;
 
     private Connection connection;
     private PreparedStatement insertdata;
@@ -49,7 +53,7 @@ public class ManageMember implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        btn_delete.setDisable(true);
         txt_id.setEditable(false);
         txt_name.setDisable(true);
         txt_address.setDisable(true);
@@ -84,6 +88,8 @@ public class ManageMember implements Initializable {
                 txt_name.setDisable(false);
                 txt_address.setDisable(false);
                 txt_contact.setDisable(false);
+                addMember.setDisable(false);
+                btn_delete.setDisable(false);
                 memberTM data = tableMember.getSelectionModel().getSelectedItem();
                 addMember.setText("Update");
                 if(data != null) {
@@ -154,6 +160,7 @@ public class ManageMember implements Initializable {
         txt_name.setDisable(false);txt_address.setDisable(false);txt_contact.setDisable(false);
         addMember.setDisable(false);
         addMember.setText("Add Member");
+        btn_delete.setDisable(true);
 
         try {
             ResultSet resultSet = getId.executeQuery();
@@ -162,7 +169,15 @@ public class ManageMember implements Initializable {
                 String[] split = string.split(":");
                 int temp = Integer.parseInt(split[1]);
                 temp++;
-                txt_id.setText("M:00"+temp);
+                if(temp<10) {
+                    txt_id.setText("M:00" + temp);
+                }
+                else if(temp<100) {
+                    txt_id.setText("M:0" + temp);
+                }
+                else if(temp<1000) {
+                    txt_id.setText("M:" + temp);
+                }
             }
             else{
                 txt_id.setText("M:001");
@@ -177,28 +192,48 @@ public class ManageMember implements Initializable {
     }
 
     public void btn_addMemberOnAction(ActionEvent actionEvent) throws SQLException {
-       if(addMember.getText().equals("Add Member")){
+       if(addMember.getText().equals("Add Member")) {
 
            String id = txt_id.getText();
            String name = txt_name.getText();
            String address = txt_address.getText();
            String contact = txt_contact.getText();
 
-           if(!id.matches("\\b^M\\d+$\\b")&&!name.matches("\\b^[[a-zA-z][.]?\\s?[a-zA-z]]+$\\b")){}
+           if (!name.matches("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$") || !address.matches("\\S+[a-zA-Z0-9/.,:\\sa-zA-Z0-9]+\\S+") || !contact.matches("^[+]?[0-9]{3}[-]?[0-9]{7}$")) {
+               Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"PLESE ENTER VALID DETAILS",ButtonType.OK);
+                        alert.showAndWait();
+                        if(!name.matches("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$")){
+                            txt_name.setFocusColor(Color.RED);
+                            txt_name.requestFocus();
+                        }
+                        else if(!address.matches("\\S+[a-zA-Z0-9/.,:\\sa-zA-Z0-9]+\\S+")){
+                            txt_address.setFocusColor(Color.RED);
+                            txt_address.requestFocus();
+                        }
+                        else if(!contact.matches("^[+]?[0-9]{3}[-]?[0-9]{7}$")){
+                            txt_contact.setFocusColor(Color.RED);
+                            txt_contact.requestFocus();
+                        }
 
-           insertdata.setString(1, id);
-           insertdata.setString(2, name);
-           insertdata.setString(3, address);
-           insertdata.setString(4, contact);
-           insertdata.executeUpdate();
+           } else {
 
-           tabledataenter();
+               insertdata.setString(1, id);
+               insertdata.setString(2, name);
+               insertdata.setString(3, address);
+               insertdata.setString(4, contact);
+               insertdata.executeUpdate();
 
-           txt_id.clear();
-           txt_name.clear();
-           txt_address.clear();
-           txt_contact.clear();
-           addMember.setDisable(true);
+               tabledataenter();
+               txt_contact.setFocusColor(Color.BLUE);
+               txt_address.setFocusColor(Color.BLUE);
+               txt_name.setFocusColor(Color.BLUE);
+
+               txt_id.clear();
+               txt_name.clear();
+               txt_address.clear();
+               txt_contact.clear();
+               addMember.setDisable(true);
+           }
        }
 
        else if(addMember.getText().equals("Update")){
@@ -212,6 +247,14 @@ public class ManageMember implements Initializable {
            update.executeUpdate();
 
            tabledataenter();
+
+           txt_id.clear();
+           txt_name.clear();
+           txt_address.clear();
+           txt_contact.clear();
+           addMember.setText("Add Member");
+           addMember.setDisable(true);
+           btn_delete.setDisable(true);
 
        }
 
@@ -231,8 +274,8 @@ public class ManageMember implements Initializable {
         }
     }
 
-
     public void btn_deleteOnAction(ActionEvent actionEvent) throws SQLException {
+
         Alert alert =new Alert(Alert.AlertType.WARNING,"Do You Wish To Delete This Member",
                 ButtonType.YES,ButtonType.NO);
         Optional<ButtonType> buttonType = alert.showAndWait();
@@ -241,9 +284,43 @@ public class ManageMember implements Initializable {
             deletedata.setString(1, selected.getId());
             deletedata.executeUpdate();
             tabledataenter();
+            btn_delete.setDisable(true);
+            addMember.setDisable(true);
+            addMember.setText("Add Member");
+            txt_id.clear();
+            txt_name.clear();
+            txt_address.clear();
+            txt_contact.clear();
         }
 
     }
 
 
+    public void txt_nameOnAction(ActionEvent actionEvent) {
+        txt_address.requestFocus();
+    }
+
+    public void txt_addressOnAction(ActionEvent actionEvent) {
+        txt_contact.requestFocus();
+    }
+
+    public void txt_ContactOnAction(ActionEvent actionEvent) {
+        addMember.requestFocus();
+    }
+
+    public void btnMouseEnter(MouseEvent mouseEvent) {
+        JFXButton btn = (JFXButton) mouseEvent.getSource();
+        ScaleTransition scaleT = new ScaleTransition(Duration.millis(200.0D), btn);
+        scaleT.setToX(1.1D);
+        scaleT.setToY(1.1D);
+        scaleT.play();
+    }
+
+    public void btnMuseExit(MouseEvent mouseEvent) {
+        JFXButton btn = (JFXButton) mouseEvent.getSource();
+        ScaleTransition scaleT = new ScaleTransition(Duration.millis(200.0D), btn);
+        scaleT.setToX(1D);
+        scaleT.setToY(1D);
+        scaleT.play();
+    }
 }

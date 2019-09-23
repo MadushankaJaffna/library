@@ -17,8 +17,8 @@
             <Image url="@../photos/mainphoto.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00116582" height="493.0" layoutX="-6.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
-      <Label layoutX="161.0" layoutY="14.0" prefHeight="50.0" prefWidth="402.0" text="Welcome To Library " textAlignment="CENTER" textOverrun="CLIP">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5d5f6373" height="493.0" layoutX="-6.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="737.0" />
+      <Label layoutX="120.0" layoutY="26.0" prefHeight="55.0" prefWidth="487.0" text="Welcome To Library " textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font name="Britannic Bold" size="45.0" />
          </font>

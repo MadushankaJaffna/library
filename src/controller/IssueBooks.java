@@ -176,7 +176,14 @@ public class IssueBooks implements Initializable {
                 String[] split = s.split(":");
                 int i = Integer.parseInt(split[1]);
                 i++;
+                if(i<10){
+                orderId.setText("OD00:"+i);
+            }   else if(i<100){
+                orderId.setText("OD:0"+i);
+                }
+                else if(i<1000){
                 orderId.setText("OD:"+i);
+                }
             }
             else{
                 orderId.setText("OD:001");
